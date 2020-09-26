@@ -18,6 +18,14 @@ body .right {
     float: right !important;
 }
 
+body .bold {
+    font-weight: bold !important;
+}
+
+body .hidden {
+    opacity: 0 !important;
+}
+
 body .font-white {
     color: white;
 }
@@ -34,6 +42,14 @@ body .padding-top-40 {
     padding-top: 40px;
 }
 
+body .margin-bottom-10 {
+    margin-bottom: 10px !important;
+}
+
+body .height-80 {
+    height: 80px;
+}
+
 body div.space {
     height: 50px;
     width: 100%;
@@ -41,9 +57,10 @@ body div.space {
 }
 
 div.section-wrap {
-  display:         flex;
-  flex-wrap:       wrap;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  position: relative;
 }
 
 div.section-wrap.yellow {
@@ -122,7 +139,9 @@ div.section img.img-contact {
 }
 
 div.section img.img-logo {
-    padding: 30px 0 0 0;
+    padding: 25px 0px 0 0;
+    position: relative;
+    right: 13px;
 }
 
 div.section img.img-team {
@@ -131,6 +150,14 @@ div.section img.img-team {
     width: 120px;
     float: right;
     margin: 20px 20px 20px 0;
+}
+
+div.section img.message-avatar {
+    border-radius: 100px;
+    border: none;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
 }
 
 div.section h4 {
@@ -201,4 +228,125 @@ textarea {
 #map {
   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
+}
+
+div.chat {
+    width: 70%;
+}
+
+div.message {
+    margin: 0;
+    padding: 0 0 5px 0;
+    display: inline-block;
+    width: 100%;
+}
+
+div.message p{
+    background-color: #ececec;
+    margin: 0;
+    padding: 12px 19px;
+    border-radius: 30px;
+    font-size: 18px;
+    max-width: 70%;
+}
+
+div.message p.blue {
+    background-color: #0084ff;
+    color: white;
+}
+
+input.fcb-chat-input {
+    border-radius: 50px;
+    background-color: #f2f2f2;
+    border: none;
+    background-image: url(../images/facebook-chat-icons-2.png);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 40px;
+    width: 740px;
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
+img.fcb-chat-icons-1 {
+    position: relative;
+    top: 9px;
+}
+
+img.fcb-chat-icons-3 {
+    position: relative;
+    top: 10px;
+}
+
+div.section div.popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.section div.popup-overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    background-color: #505050;
+    height: 100%;
+    opacity: 0.9;
+    z-index: 10;
+}
+
+div.section div.popup-message {
+    z-index: 100;
+    position: relative;
+    text-align: center;
+    display: inline-table;
+}
+
+div.section div.popup-message p{
+    background-color: white;
+    margin-top: 140px;
+    padding: 10px 50px;
+    border-radius: 35px;
+    line-height: 30px;
+}
+
+div.section div.popup-message img.emoticon {
+    width: 23px;
+    height: 23px;
+    position: relative;
+    top: 4px;
+    margin: 0 4px;
+}
+div.section div.popup-buttons{
+    position: relative;
+}
+
+div.section div.popup-buttons div.button-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.section div.popup-buttons div.button-wrapper a{
+    background-color: white;
+    padding: 5px 30px;
+    margin-left: 10px;
+    border-radius: 35px;
+    line-height: 30px;
+    cursor: pointer;
+    border: solid 2px white;
+}
+
+div.section div.popup-buttons div.button-wrapper a:hover{
+    border: solid 2px black;
 }
