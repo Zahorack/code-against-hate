@@ -55,10 +55,12 @@
                     $.get('http://rholly.sk:88/api/v1/check', {message: $('#fcb-chat-input').val()}, function (data, textStatus, jqXHR) {
                         if (data.result == 1 ) {
                             $("#popup-overlay").removeClass("display-none");
-                            $("#popup-buttons-no").focus()
+                            $("#popup-buttons-no").focus();
                         } else {
-                            save_fb_message()
+                            save_fb_message();
                         }
+                    }).fail(function() {
+                        save_fb_message();
                     });
                 }
             }
