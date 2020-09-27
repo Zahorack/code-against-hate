@@ -30,4 +30,4 @@ def api_check():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=88)
+    app.run(host='0.0.0.0', port=88)
