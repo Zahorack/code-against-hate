@@ -52,7 +52,7 @@
 
             function checkSubmittedMessage() {
                 if ($("#fcb-chat-input").val().length > 0) {
-                    $.get('http://rholly.sk:88/api/v1/check', {message: $('#fcb-chat-input').val()}, function (data, textStatus, jqXHR) {
+                    $.get('http://rholly.sk:80/api/v1/check', {message: $('#fcb-chat-input').val()}, function (data, textStatus, jqXHR) {
                         if (data.result == 1 ) {
                             $("#popup-overlay").removeClass("display-none");
                             $("#popup-buttons-no").focus();
