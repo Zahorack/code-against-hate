@@ -8,8 +8,8 @@
         <meta name="description" content="Our page provide tools for hate-speech check.">
         <meta name="author" content="Jan Macek">
 
-        <link rel="stylesheet" href="../static/stylesheets/normalize.css">
-        <link rel="stylesheet" href="../static/stylesheets/style.css">
+        <link rel="stylesheet" href="/static/stylesheets/normalize.css">
+        <link rel="stylesheet" href="/static/stylesheets/style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -52,7 +52,7 @@
 
             $("#fcb-chat-input").enterKey(function () {
                 if ($("#fcb-chat-input").val().length > 0) {
-                    $.get('http://localhost:88/api/v1/check', {message: $('#fcb-chat-input').val()}, function (data, textStatus, jqXHR) {
+                    $.get('http://rholly.sk:88/api/v1/check', {message: $('#fcb-chat-input').val()}, function (data, textStatus, jqXHR) {
                         if (data.result == 1 ) {
                             $("#popup-overlay").removeClass("display-none");
                             $("#popup-buttons-no").focus()
