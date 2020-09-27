@@ -310,9 +310,18 @@ div.section div.popup-message {
 div.section div.popup-message p{
     background-color: white;
     margin-top: 140px;
-    padding: 10px 50px;
+    padding: 15px 50px;
     border-radius: 35px;
     line-height: 30px;
+}
+
+div.section div.popup-message p a{
+    color: black;
+    font-weight: 900;
+}
+
+div.section div.popup-message p a:hover{
+    text-decoration: none;
 }
 
 div.section div.popup-message img.emoticon {
@@ -340,13 +349,13 @@ div.section div.popup-buttons div.button-wrapper{
 div.section div.popup-buttons div.button-wrapper a{
     background-color: white;
     padding: 5px 30px;
-    margin-left: 10px;
+    margin: 2px 2px 2px 12px;
     border-radius: 35px;
     line-height: 30px;
     cursor: pointer;
-    border: solid 2px white;
 }
 
 div.section div.popup-buttons div.button-wrapper a:hover{
+    margin: 0 0 0 10px;
     border: solid 2px black;
 }
