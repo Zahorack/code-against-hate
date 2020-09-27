@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
+import tensorflow as tf
 
 app = Flask(__name__)
+model = tf.keras.models.load_model('model')
 
 
 @app.route('/', methods=['GET'])
@@ -19,7 +21,7 @@ def api_check():
         }), 422
 
     # No hate speech = 0 / Hate speech = 1
-    result = 1
+    result = 1 if model.predict([str(message)]) > 0.5 else 0
 
     return jsonify({
         'result': result,
@@ -28,4 +30,4 @@ def api_check():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=88)
+    app.run(host='0.0.0.0', port=88)
