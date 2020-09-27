@@ -150,10 +150,10 @@ div.section img.img-logo {
 
 div.section img.img-team {
     border-radius: 100px;
-    border: solid 1px #2f2c40;
+    border: none;
     width: 120px;
-    float: right;
-    margin: 20px 20px 20px 0;
+    margin: 20px 10px 20px 30px;
+    filter: grayscale(100%);
 }
 
 div.section img.message-avatar {
