@@ -14,6 +14,10 @@ body .left {
     float: left !important;
 }
 
+body .display-none {
+    display: none !important;
+}
+
 body .right {
     float: right !important;
 }

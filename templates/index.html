@@ -14,6 +14,45 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script>
+        $(document).ready(function(){
+            $.fn.enterKey = function (fnc) {
+                return this.each(function () {
+                    $(this).keypress(function (ev) {
+                        var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                        if (keycode == '13') {
+                            fnc.call(this, ev);
+                        }
+                    })
+                })
+            }
+
+            $("#fcb-chat-input").on("keyup", function () {
+                $("#new-message-text").text(". . .")
+                if ($("#fcb-chat-input").val().length > 0) {
+                    $("#new-message").removeClass("hidden")
+                } else {
+                    $("#new-message").addClass("hidden")
+                }
+            })
+
+            $("#fcb-chat-input").enterKey(function () {
+                $("#popup-overlay").removeClass("display-none");
+            })
+
+            $("#popup-buttons-yes").click(function() {
+                var message = $("#fcb-chat-input").val();
+                $("#fcb-chat-input").val("");
+                $("#popup-overlay").addClass("display-none");
+                $("#new-message-text").text(message)
+            })
+
+            $("#popup-buttons-no").click(function() {
+                $("#popup-overlay").addClass("display-none");
+                $("#new-message-test").val("hidden")
+            })
+        });
+        </script>
     </head>
 
     <body>
@@ -51,19 +90,19 @@
         <div class="section-wrap" id="example">
             <div class="section">
                 <div class="space"></div>
-                <div class="popup-overlay">
+                <div id="popup-overlay" class="popup-overlay display-none">
                     <div class="popup-overlay-bg"></div>
                     <div class="popup-message">
                         <p>
-                            It looks like this comment <span class="bold">calls for violence</span> <img class="emoticon" src="../static/images/fearful-face.png">.<br>
+                            It looks like your message <span class="bold">calls for violence</span> <img class="emoticon" src="../static/images/fearful-face.png">.<br>
                             Are you sure, you want to publish it?<br>
                             <a href="https://en.wikipedia.org/wiki/Hate_speech">Here</a> you can read something about this issue.
                         </p>
                         <div class="popup-buttons">
                             <div class="button-wrapper">
-                            <a>Yes.</a>
-                                <a class="bold">No. Let me change it.</a>
-                                </div>
+                                <a id="popup-buttons-yes">Yes.</a>
+                                <a id="popup-buttons-no" class="bold">No. Let me change it.</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,16 +123,18 @@
                         <img class="message-avatar left" src="../static/images/facebook-avatar-1.png" />
                         <p class="left">Cras at urna sit amet justo tincidunt fringilla. Ut eget pulvinar ante.</p>
                     </div>
-                    <div class="height-80"><div class="message right-message hidden">
-                        <img class="message-avatar right" src="../static/images/facebook-avatar-2.png" />
-                        <p class="right blue">. . .</p>
-                    </div></div></div>
-                    <div class="message margin-bottom-10">
-                        <img class="fcb-chat-icons-1" src="../static/images/facebook-chat-icons-1.png">
-                        <input class="fcb-chat-input" placeholder="Aa"/>
-                        <img class="fcb-chat-icons-3" src="../static/images/facebook-chat-icons-3.png">
+                    <div class="height-80">
+                            <div id="new-message" class="message right-message hidden">
+                                <img class="message-avatar right" src="../static/images/facebook-avatar-2.png" />
+                                <p id="new-message-text" class="right blue">. . .</p>
+                            </div>
                     </div>
-
+                </div>
+                <div class="message margin-bottom-10">
+                    <img class="fcb-chat-icons-1" src="../static/images/facebook-chat-icons-1.png">
+                    <input id="fcb-chat-input" class="fcb-chat-input" placeholder="Aa"/>
+                    <img class="fcb-chat-icons-3" src="../static/images/facebook-chat-icons-3.png">
+                </div>
             </div>
         </div>
         <div class="section-wrap yellow" id="contact">
