@@ -27,6 +27,16 @@
                 })
             }
 
+            function save_fb_message() {
+                var message = $("#fcb-chat-input").val();
+                $("#fcb-chat-input").val("");
+                $("#popup-overlay").addClass("display-none");
+                $(".fcb-chat-icons-4").addClass("display-none")
+                $(".fcb-chat-icons-3").removeClass("display-none")
+                $("#new-message-text").text(message)
+                $("#fcb-chat-input").blur();
+            }
+
             $("#fcb-chat-input").on("keyup", function () {
                 $("#new-message-text").text(". . .")
                 if ($("#fcb-chat-input").val().length > 0) {
@@ -42,8 +52,14 @@
 
             $("#fcb-chat-input").enterKey(function () {
                 if ($("#fcb-chat-input").val().length > 0) {
-                    $("#popup-overlay").removeClass("display-none");
-                    $("#popup-buttons-no").focus()
+                    $.get('http://localhost:88/api/v1/check', {message: $('#fcb-chat-input').val()}, function (data, textStatus, jqXHR) {
+                        if (data.result == 1 ) {
+                            $("#popup-overlay").removeClass("display-none");
+                            $("#popup-buttons-no").focus()
+                        } else {
+                            save_fb_message()
+                        }
+                    });
                 }
             })
 
@@ -54,7 +70,6 @@
                         $("#popup-buttons-yes").focus()
                     }
                 }
-
             });
 
             $("#popup-buttons-yes").on("keyup", function(ev) {
@@ -75,12 +90,7 @@
             })
 
             $("#popup-buttons-yes").click(function() {
-                var message = $("#fcb-chat-input").val();
-                $("#fcb-chat-input").val("");
-                $("#popup-overlay").addClass("display-none");
-                $(".fcb-chat-icons-4").addClass("display-none")
-                $(".fcb-chat-icons-3").removeClass("display-none")
-                $("#new-message-text").text(message)
+                save_fb_message()
             })
 
             $("#popup-buttons-no").click(function() {
