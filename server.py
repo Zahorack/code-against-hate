@@ -21,7 +21,7 @@ def api_check():
         }), 422
 
     # No hate speech = 0 / Hate speech = 1
-    result = 1 if model.predict([str(message)]) > 0.5 else result = 0
+    result = 1 if model.predict([str(message)]) > 0.5 else 0
 
     return jsonify({
         'result': result,
