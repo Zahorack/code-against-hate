@@ -280,7 +280,7 @@ div.message p.blue {
 input.fcb-chat-input {
     border-radius: 50px;
     background-color: #f2f2f2;
-    border: none;
+    border: solid 2px white;
     background-image: url(../images/facebook-chat-icons-2.png);
     background-repeat: no-repeat;
     background-position: right 10px center;
@@ -288,7 +288,19 @@ input.fcb-chat-input {
     width: 740px;
     margin-left: 10px;
     padding-left: 20px;
+    -webkit-animation: blink 2s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:linear;
 }
+
+input.fcb-chat-input:focus,
+input.fcb-chat-input:active,
+input.fcb-chat-input:hover{
+    -webkit-animation: 0;
+    border-color:#0084ff;
+}
+
+@keyframes blink { 50% { border-color:#0084ff ; }  }
 
 img.fcb-chat-icons-1 {
     position: relative;
@@ -396,3 +408,5 @@ div.section div.popup-buttons div.button-wrapper button:focus{
     margin: 0 0 0 10px;
     color: #0084ff;
 }
+
+
