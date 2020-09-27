@@ -31,25 +31,62 @@
                 $("#new-message-text").text(". . .")
                 if ($("#fcb-chat-input").val().length > 0) {
                     $("#new-message").removeClass("hidden")
+                    $(".fcb-chat-icons-3").addClass("display-none")
+                    $(".fcb-chat-icons-4").removeClass("display-none")
                 } else {
                     $("#new-message").addClass("hidden")
+                    $(".fcb-chat-icons-4").addClass("display-none")
+                    $(".fcb-chat-icons-3").removeClass("display-none")
                 }
             })
 
             $("#fcb-chat-input").enterKey(function () {
-                $("#popup-overlay").removeClass("display-none");
+                if ($("#fcb-chat-input").val().length > 0) {
+                    $("#popup-overlay").removeClass("display-none");
+                    $("#popup-buttons-no").focus()
+                }
+            })
+
+            $("#popup-buttons-no").on("keyup", function(ev) {
+                var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                if (keycode == '37') {
+                    if ($("#popup-buttons-no").is(":focus")) {
+                        $("#popup-buttons-yes").focus()
+                    }
+                }
+
+            });
+
+            $("#popup-buttons-yes").on("keyup", function(ev) {
+                var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                if (keycode == '39') {
+                    if ($("#popup-buttons-yes").is(":focus")) {
+                        $("#popup-buttons-no").focus()
+                    }
+                }
+
+            });
+
+            $(".fcb-chat-icons-4").click(function () {
+                if ($("#fcb-chat-input").val().length > 0) {
+                    $("#popup-overlay").removeClass("display-none");
+                    $("#popup-buttons-no").focus()
+                }
             })
 
             $("#popup-buttons-yes").click(function() {
                 var message = $("#fcb-chat-input").val();
                 $("#fcb-chat-input").val("");
                 $("#popup-overlay").addClass("display-none");
+                $(".fcb-chat-icons-4").addClass("display-none")
+                $(".fcb-chat-icons-3").removeClass("display-none")
                 $("#new-message-text").text(message)
             })
 
             $("#popup-buttons-no").click(function() {
                 $("#popup-overlay").addClass("display-none");
                 $("#new-message-test").val("hidden")
+                $("#fcb-chat-input").focus()
             })
         });
         </script>
@@ -93,15 +130,15 @@
                 <div id="popup-overlay" class="popup-overlay display-none">
                     <div class="popup-overlay-bg"></div>
                     <div class="popup-message">
-                        <p>
-                            It looks like your message <span class="bold">calls for violence</span> <img class="emoticon" src="../static/images/fearful-face.png">.<br>
-                            Are you sure, you want to publish it?<br>
-                            <a href="https://en.wikipedia.org/wiki/Hate_speech">Here</a> you can read something about this issue.
+                        <p id="popup-message-issue-1">
+                            It looks like your <span class="bold">message calls for violence</span> <img class="emoticon" src="../static/images/fearful-face.png">.<br>
+                            <a href="https://en.wikipedia.org/wiki/Hate_speech">Here</a> you can read something about this issue.<br>
+                            Are you sure, you want to <span class="bold">publish it?</span>
                         </p>
                         <div class="popup-buttons">
                             <div class="button-wrapper">
-                                <a id="popup-buttons-yes">Yes.</a>
-                                <a id="popup-buttons-no" class="bold">No. Let me change it.</a>
+                                <button id="popup-buttons-yes">Yes.</button>
+                                <button id="popup-buttons-no" class="bold">No. Let me change it.</button>
                             </div>
                         </div>
                     </div>
@@ -123,7 +160,7 @@
                         <img class="message-avatar left" src="../static/images/facebook-avatar-1.png" />
                         <p class="left">Cras at urna sit amet justo tincidunt fringilla. Ut eget pulvinar ante.</p>
                     </div>
-                    <div class="height-80">
+                    <div class="height-90">
                             <div id="new-message" class="message right-message hidden">
                                 <img class="message-avatar right" src="../static/images/facebook-avatar-2.png" />
                                 <p id="new-message-text" class="right blue">. . .</p>
@@ -134,6 +171,7 @@
                     <img class="fcb-chat-icons-1" src="../static/images/facebook-chat-icons-1.png">
                     <input id="fcb-chat-input" class="fcb-chat-input" placeholder="Aa"/>
                     <img class="fcb-chat-icons-3" src="../static/images/facebook-chat-icons-3.png">
+                    <img class="fcb-chat-icons-4 display-none" src="../static/images/facebook-chat-icons-4.png">
                 </div>
             </div>
         </div>

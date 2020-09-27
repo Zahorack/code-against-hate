@@ -50,8 +50,8 @@ body .margin-bottom-10 {
     margin-bottom: 10px !important;
 }
 
-body .height-80 {
-    height: 80px;
+body .height-90 {
+    height: 90px !important;
 }
 
 body div.space {
@@ -282,6 +282,13 @@ img.fcb-chat-icons-3 {
     top: 10px;
 }
 
+img.fcb-chat-icons-4 {
+    left: 9px;
+    position: relative;
+    top: 6px;
+    cursor: pointer;
+}
+
 div.section div.popup-overlay {
     position: absolute;
     top: 0;
@@ -350,16 +357,24 @@ div.section div.popup-buttons div.button-wrapper{
     justify-content: center;
 }
 
-div.section div.popup-buttons div.button-wrapper a{
+div.section div.popup-buttons div.button-wrapper button{
     background-color: white;
     padding: 5px 30px;
     margin: 2px 2px 2px 12px;
     border-radius: 35px;
     line-height: 30px;
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 
-div.section div.popup-buttons div.button-wrapper a:hover{
+div.section div.popup-buttons div.button-wrapper button:hover {
+    background-color:  #0084ff;
+    color: white !important;
+}
+
+div.section div.popup-buttons div.button-wrapper button:focus{
+    border: solid 2px #0084ff;
     margin: 0 0 0 10px;
-    border: solid 2px black;
+    color: #0084ff;
 }
